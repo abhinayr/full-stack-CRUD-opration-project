@@ -1,0 +1,46 @@
+<div class="section-header">
+  <div>
+    <h2>Saved Users</h2>
+    <p class="section-subtitle">Live view of all users in the system</p>
+  </div>
+  <div class="user-count">{{ users.length }} total</div>
+</div>
+
+<div *ngIf="users.length === 0" class="empty-state premium-empty">
+  <div class="empty-icon">✦</div>
+  <div class="empty-title">No users added yet</div>
+  <div class="empty-text">Create a user from the form and it will appear here instantly.</div>
+</div>
+
+<div *ngIf="users.length > 0" class="table-shell">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Note</th>
+        <th class="action-column">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>
+          <div class="name-cell">
+            <div class="avatar">
+              {{ user.firstName.charAt(0) }}{{ user.lastName.charAt(0) }}
+            </div>
+            <div>
+              <div class="full-name">{{ user.firstName }} {{ user.lastName }}</div>
+            </div>
+          </div>
+        </td>
+        <td>{{ user.email }}</td>
+        <td class="note-cell">{{ user.note || 'No note added' }}</td>
+        <td class="action-column">
+          <button type="button" class="edit-btn" (click)="onEdit(user)">Edit</button>
+          <button type="button" class="delete-btn" (click)="deleteUser(user.id!)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

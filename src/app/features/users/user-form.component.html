@@ -1,0 +1,72 @@
+<div class="form-header">
+  <div>
+    <h2>{{ isEditMode ? 'Edit User' : 'Create User' }}</h2>
+    <p class="section-subtitle">
+      {{ isEditMode ? 'Update user details below' : 'Add a new user to the system' }}
+    </p>
+  </div>
+  <div class="form-badge">{{ isEditMode ? 'Editing' : 'New' }}</div>
+</div>
+
+<form (ngSubmit)="saveUser()">
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input
+      id="firstName"
+      type="text"
+      name="firstName"
+      [(ngModel)]="user.firstName"
+      placeholder="Enter first name"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input
+      id="lastName"
+      type="text"
+      name="lastName"
+      [(ngModel)]="user.lastName"
+      placeholder="Enter last name"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input
+      id="email"
+      type="email"
+      name="email"
+      [(ngModel)]="user.email"
+      placeholder="Enter email address"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="note">Note</label>
+    <textarea
+      id="note"
+      name="note"
+      rows="5"
+      [(ngModel)]="user.note"
+      placeholder="Write a short note"
+    ></textarea>
+  </div>
+
+  <div class="form-actions">
+    <button type="submit" class="primary-btn">
+      {{ isSaving ? 'Saving...' : (isEditMode ? 'Update User' : 'Save User') }}
+    </button>
+
+    <button
+      *ngIf="isEditMode"
+      type="button"
+      class="secondary-btn"
+      (click)="clearForm()">
+      Cancel
+    </button>
+  </div>
+</form>

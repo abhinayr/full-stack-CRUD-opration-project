@@ -1,0 +1,31 @@
+<div class="animated-background">
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <div class="glow glow-three"></div>
+</div>
+
+<div class="page">
+  <div class="hero-card">
+    <h1>User Management</h1>
+    <p class="subtitle">Manage users and notes with a clean live dashboard</p>
+  </div>
+
+  <div class="layout">
+    <div class="left-panel glass-card">
+      <app-user-form
+        [selectedUser]="selectedUser"
+        (userSaved)="handleUserSaved($event)"
+        (cancelEdit)="clearSelectedUser()">
+      </app-user-form>
+    </div>
+
+    <div class="right-panel glass-card">
+      <app-user-list
+        [users]="users"
+        (usersLoaded)="handleUsersLoaded($event)"
+        (editUser)="handleEditUser($event)"
+        (userDeleted)="handleDeleteUser($event)">
+      </app-user-list>
+    </div>
+  </div>
+</div>
