@@ -1,4 +1,4 @@
-#CRUD Application
+# CRUD Application
 
 ![Java](https://img.shields.io/badge/Java-25-blue)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-4.0-green)
